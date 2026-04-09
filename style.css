@@ -121,6 +121,454 @@ h1 {
   text-shadow: 0 0 14px rgba(236, 239, 243, 0.2);
 }
 
+.merch-page {
+  background-image:
+    radial-gradient(circle at 18% 18%, rgba(118, 123, 132, 0.24), transparent 42%),
+    radial-gradient(circle at 82% 12%, rgba(84, 81, 81, 0.28), transparent 40%),
+    linear-gradient(145deg, rgba(8, 8, 9, 0.95), rgba(26, 27, 30, 0.88));
+  color: #d9dce2;
+}
+
+.merch-page .brand-link {
+  color: rgba(229, 232, 237, 0.9);
+}
+
+.merch-page .navbar a {
+  color: #9ea7b5;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.merch-page .navbar a:hover,
+.merch-page .navbar a:focus-visible,
+.merch-page .navbar a[aria-current="page"] {
+  color: #eceff3;
+  text-shadow: 0 0 14px rgba(236, 239, 243, 0.2);
+}
+
+.merch-wrapper {
+  width: min(1100px, calc(100% - 3rem));
+  margin: 6.5rem auto 4.5rem;
+}
+
+.merch-header {
+  margin-bottom: 2rem;
+}
+
+.merch-kicker {
+  margin: 0;
+  color: #aeb6c2;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.02rem;
+}
+
+.merch-header h1 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(2.3rem, 5vw, 4.1rem);
+  color: #eceff3;
+  line-height: 0.95;
+}
+
+.merch-lead {
+  margin: 0.75rem 0 0;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(213, 218, 228, 0.9);
+  font-size: 1.04rem;
+}
+
+.avatar-builder {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.avatar-stage {
+  position: relative;
+  min-height: 640px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(164, 171, 182, 0.18), transparent 26%),
+    linear-gradient(180deg, rgba(27, 30, 34, 0.9), rgba(16, 18, 21, 0.96));
+  border: 1px solid rgba(164, 171, 182, 0.22);
+  overflow: hidden;
+}
+
+.avatar-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 94%, rgba(255, 255, 255, 0.03) 95%, transparent 96%),
+    linear-gradient(90deg, transparent 94%, rgba(255, 255, 255, 0.03) 95%, transparent 96%);
+  background-size: 100% 64px, 64px 100%;
+  opacity: 0.18;
+}
+
+.avatar-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 108px;
+  width: 190px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.34);
+  filter: blur(10px);
+  transform: translateX(-50%);
+}
+
+.avatar {
+  --avatar-skin: #b8b0a3;
+  --avatar-accent: #1f2228;
+  --avatar-hair: #1c1d21;
+  --avatar-shoe: #111215;
+  --avatar-eyes: #f5f5f5;
+  --avatar-top: #3a3c42;
+  --avatar-bottom: #3a3c42;
+  --avatar-cap-opacity: 0;
+  --avatar-top-length: 168px;
+  --avatar-bottom-length: 150px;
+  --avatar-bottom-offset: 338px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 290px;
+  height: 520px;
+  transform: translate(-50%, -50%);
+}
+
+.avatar-head {
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  width: 132px;
+  height: 132px;
+  transform: translateX(-50%);
+  border-radius: 44% 44% 42% 42%;
+  background: radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.16), transparent 24%), var(--avatar-skin);
+  box-shadow: inset 0 -10px 18px rgba(0, 0, 0, 0.18), 0 8px 26px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-cap {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  width: 146px;
+  height: 54px;
+  transform: translateX(-50%);
+  border-radius: 52% 52% 36% 36%;
+  background: #2a2c30;
+  opacity: var(--avatar-cap-opacity);
+  box-shadow: inset 0 -8px 16px rgba(0, 0, 0, 0.22);
+}
+
+.avatar-cap::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 26px;
+  width: 104px;
+  height: 20px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #1d1f23;
+}
+
+.avatar-cap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  width: 84px;
+  height: 10px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.avatar-eyes {
+  position: absolute;
+  left: 50%;
+  top: 62px;
+  width: 56px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, var(--avatar-eyes) 0 35%, transparent 36%),
+    radial-gradient(circle, var(--avatar-eyes) 0 35%, transparent 36%);
+  background-position: 12px 50%, 44px 50%;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+}
+
+.avatar-mouth {
+  position: absolute;
+  left: 50%;
+  top: 94px;
+  width: 30px;
+  height: 10px;
+  transform: translateX(-50%);
+  border-bottom: 4px solid rgba(30, 30, 34, 0.55);
+  border-radius: 0 0 18px 18px;
+}
+
+.avatar-neck {
+  position: absolute;
+  left: 50%;
+  top: 156px;
+  width: 30px;
+  height: 24px;
+  transform: translateX(-50%);
+  background: var(--avatar-skin);
+}
+
+.avatar-torso {
+  position: absolute;
+  left: 50%;
+  top: 176px;
+  width: 168px;
+  height: var(--avatar-top-length);
+  transform: translateX(-50%);
+  border-radius: 36px 36px 26px 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 26%), var(--avatar-top);
+  box-shadow: inset 0 -18px 24px rgba(0, 0, 0, 0.18);
+}
+
+.avatar-top-layer {
+  position: absolute;
+  left: 50%;
+  top: 176px;
+  width: 140px;
+  height: 20px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.avatar-torso::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 58px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--avatar-accent);
+}
+
+.avatar-arm {
+  position: absolute;
+  top: 194px;
+  width: 42px;
+  height: 154px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%), var(--avatar-top);
+  box-shadow: inset 0 -12px 18px rgba(0, 0, 0, 0.18);
+}
+
+.avatar-arm::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 36px;
+  height: 36px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--avatar-skin);
+  box-shadow: inset 0 -8px 10px rgba(0, 0, 0, 0.14);
+}
+
+.avatar-arm-left {
+  left: 26px;
+  transform: rotate(var(--avatar-arm-angle));
+}
+
+.avatar-arm-right {
+  right: 26px;
+  transform: rotate(calc(var(--avatar-arm-angle) * -1));
+}
+
+.avatar-leg {
+  position: absolute;
+  top: var(--avatar-bottom-offset);
+  width: 58px;
+  height: var(--avatar-bottom-length);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%), var(--avatar-bottom);
+  box-shadow: inset 0 -12px 18px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-leg::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 24px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.avatar-bottom-layer {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--avatar-bottom-offset) + 28px);
+  width: 182px;
+  height: 122px;
+  transform: translateX(-50%);
+  border-radius: 28px 28px 20px 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 30%), var(--avatar-bottom);
+  clip-path: inset(0 0 0 0 round 28px 28px 20px 20px);
+}
+
+.avatar-leg-left {
+  left: 88px;
+  transform: rotate(0deg);
+}
+
+.avatar-leg-right {
+  right: 88px;
+  transform: rotate(0deg);
+}
+
+.avatar-shoe {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 70px;
+  height: 28px;
+  transform: translateX(-50%);
+  border-radius: 16px 16px 22px 22px;
+  background: var(--avatar-shoe);
+  box-shadow: inset 0 6px 8px rgba(255, 255, 255, 0.05);
+}
+
+.avatar-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.3rem;
+  border-radius: 22px;
+  background: rgba(27, 30, 34, 0.72);
+  border: 1px solid rgba(164, 171, 182, 0.22);
+  box-shadow: 0 12px 34px rgba(8, 12, 22, 0.3);
+}
+
+.avatar-panel-label {
+  margin: 0;
+  color: #9ea7b5;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.95rem;
+}
+
+.avatar-panel h2 {
+  margin: 0.35rem 0 0;
+  color: #eef1f5;
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+  line-height: 0.95;
+}
+
+.avatar-panel-copy {
+  margin: 0.7rem 0 0;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(213, 218, 228, 0.9);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.avatar-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.avatar-control-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 1fr;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.65rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(164, 171, 182, 0.12);
+}
+
+.avatar-control-label {
+  color: #b8c0cc;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.88rem;
+}
+
+.avatar-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  grid-column: 2 / -1;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(199, 206, 217, 0.08);
+  color: #eef1f5;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+}
+
+.avatar-choice.is-hidden {
+  display: none;
+}
+
+.avatar-arrow-button {
+  border: 1px solid rgba(164, 171, 182, 0.26);
+  background: rgba(199, 206, 217, 0.08);
+  color: #eef1f5;
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.avatar-arrow-button:hover,
+.avatar-arrow-button:focus-visible {
+  background: rgba(199, 206, 217, 0.22);
+}
+
+.avatar-button {
+  border: 1px solid rgba(164, 171, 182, 0.26);
+  background: rgba(199, 206, 217, 0.08);
+  color: #eef1f5;
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.16s ease, background-color 0.16s ease;
+}
+
+.avatar-button:hover,
+.avatar-button:focus-visible {
+  background: rgba(199, 206, 217, 0.22);
+  transform: translateY(-1px);
+}
+
+.avatar-button-strong {
+  grid-column: 1 / -1;
+  background: rgba(236, 239, 243, 0.16);
+}
+
+.avatar-button[data-merch-action$="-off"],
+.avatar-button[data-merch-action$="-on"] {
+  padding-inline: 0.85rem;
+}
+
 .events-wrapper {
   width: min(1060px, calc(100% - 3rem));
   margin: 6.5rem auto 4.5rem;
@@ -419,5 +867,29 @@ h1 {
 
   .events-grid {
     grid-template-columns: 1fr;
+  }
+
+  .avatar-builder {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-stage {
+    min-height: 560px;
+  }
+
+  .avatar {
+    transform: translate(-50%, -46%);
+  }
+
+  .avatar-control-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .avatar-control-label {
+    grid-column: 1 / -1;
+  }
+
+  .avatar-choice {
+    grid-column: 1 / -1;
   }
 }

@@ -2,7 +2,237 @@
 
 
 //merch
+const merchPresets = [
+	{
+		name: "Grey Unit",
+		skin: "#b8b0a3",
+		suit: "#3a3c42",
+		accent: "#1f2228",
+		hair: "#1c1d21",
+		shoe: "#111215",
+		eyes: "#f5f5f5",
+	},
+	{
+		name: "Concrete",
+		skin: "#a7a29c",
+		suit: "#5a5d63",
+		accent: "#2f3136",
+		hair: "#282a30",
+		shoe: "#181a1d",
+		eyes: "#f2f2f2",
+	},
+	{
+		name: "Steel",
+		skin: "#9fa5ad",
+		suit: "#44484f",
+		accent: "#23262b",
+		hair: "#121418",
+		shoe: "#101114",
+		eyes: "#f8f8f8",
+	},
+	{
+		name: "Dust",
+		skin: "#c1aa91",
+		suit: "#50545a",
+		accent: "#2d3035",
+		hair: "#3a2f28",
+		shoe: "#17181b",
+		eyes: "#fcfcfc",
+	},
+	{
+		name: "Night Shift",
+		skin: "#8f8b87",
+		suit: "#2f3237",
+		accent: "#15171a",
+		hair: "#0f1012",
+		shoe: "#090a0c",
+		eyes: "#f0f0f0",
+	},
+];
 
+const merchHeadPresets = [
+	{
+		name: "Casquette",
+		capVisible: true,
+		headColor: "#c7ccd2",
+		headLabel: "Casquette",
+	},
+	{
+		name: "Cheveux courts",
+		capVisible: false,
+		headColor: "#b8b0a3",
+		headLabel: "Cheveux",
+	},
+	{
+		name: "Beanie",
+		capVisible: true,
+		headColor: "#36383d",
+		headLabel: "Bonnet",
+	},
+];
+
+const merchTopPresets = [
+	{
+		name: "T-shirt",
+		color: "#4b4e55",
+		accent: "#24262b",
+		length: "154px",
+		armAngle: "8deg",
+	},
+	{
+		name: "Pull",
+		color: "#5d6066",
+		accent: "#2c2f34",
+		length: "182px",
+		armAngle: "4deg",
+	},
+];
+
+const merchBottomPresets = [
+	{
+		name: "Pantalon",
+		color: "#3b3e44",
+		length: "152px",
+		offset: "338px",
+	},
+	{
+		name: "Short",
+		color: "#6a6e75",
+		length: "92px",
+		offset: "396px",
+	},
+];
+
+function initMerchBuilder() {
+	const avatar = document.getElementById("avatar");
+	const avatarName = document.getElementById("avatar-name");
+	const headChoice = document.getElementById("head-choice");
+	const topChoice = document.getElementById("top-choice");
+	const bottomChoice = document.getElementById("bottom-choice");
+	const controls = document.querySelector(".avatar-controls");
+	const capElement = document.querySelector(".avatar-cap");
+	const topElement = document.querySelector(".avatar-top-layer");
+	const bottomElement = document.querySelector(".avatar-bottom-layer");
+	const headElement = document.querySelector(".avatar-head");
+	const headChoiceRow = document.querySelector('.avatar-choice[data-choice="head"]');
+	const topChoiceRow = document.querySelector('.avatar-choice[data-choice="top"]');
+	const bottomChoiceRow = document.querySelector('.avatar-choice[data-choice="bottom"]');
+
+	if (!avatar || !avatarName || !headChoice || !topChoice || !bottomChoice || !controls || !capElement || !topElement || !bottomElement || !headElement || !headChoiceRow || !topChoiceRow || !bottomChoiceRow) {
+		return;
+	}
+
+	const state = {
+		skinIndex: 0,
+		headEnabled: true,
+		headIndex: 0,
+		topEnabled: true,
+		topIndex: 0,
+		bottomEnabled: true,
+		bottomIndex: 0,
+	};
+
+	function renderMerchAvatar() {
+		const skin = merchPresets[state.skinIndex];
+		const headPreset = merchHeadPresets[state.headIndex];
+		const topPreset = merchTopPresets[state.topIndex];
+		const bottomPreset = merchBottomPresets[state.bottomIndex];
+		const headLabel = state.headEnabled ? headPreset.name : "Sans tete";
+		const topLabel = state.topEnabled ? topPreset.name : "Sans haut";
+		const bottomLabel = state.bottomEnabled ? bottomPreset.name : "Sans bas";
+
+		avatar.style.setProperty("--avatar-skin", skin.skin);
+		avatar.style.setProperty("--avatar-head-opacity", state.headEnabled ? "1" : "0.25");
+		avatar.style.setProperty("--avatar-cap-opacity", state.headEnabled && headPreset.capVisible ? "1" : "0");
+		avatar.style.setProperty("--avatar-head-color", headPreset.headColor);
+		avatar.style.setProperty("--avatar-top", state.topEnabled ? topPreset.color : "#2f3238");
+		avatar.style.setProperty("--avatar-bottom", state.bottomEnabled ? bottomPreset.color : "#2f3238");
+		avatar.style.setProperty("--avatar-accent", state.topEnabled ? topPreset.accent : "#1c1e22");
+		avatar.style.setProperty("--avatar-shoe", skin.shoe);
+		avatar.style.setProperty("--avatar-eyes", skin.eyes);
+		avatar.style.setProperty("--avatar-top-length", state.topEnabled ? topPreset.length : "58px");
+		avatar.style.setProperty("--avatar-arm-angle", topPreset.armAngle);
+		avatar.style.setProperty("--avatar-bottom-length", state.bottomEnabled ? bottomPreset.length : "34px");
+		avatar.style.setProperty("--avatar-bottom-offset", state.bottomEnabled ? bottomPreset.offset : "430px");
+		avatar.style.setProperty("--avatar-head-opacity", state.headEnabled ? "1" : "0.18");
+		headChoiceRow.classList.toggle("is-hidden", !state.headEnabled);
+		topChoiceRow.classList.toggle("is-hidden", !state.topEnabled);
+		bottomChoiceRow.classList.toggle("is-hidden", !state.bottomEnabled);
+		capElement.textContent = state.headEnabled ? "Casquette: oui" : "Casquette: non";
+		topElement.textContent = state.topEnabled ? `Haut: ${topLabel}` : "Haut: non";
+		bottomElement.textContent = state.bottomEnabled ? `Bas: ${bottomLabel}` : "Bas: non";
+		headChoice.textContent = headPreset.name;
+		topChoice.textContent = topLabel;
+		bottomChoice.textContent = bottomLabel;
+		headElement.style.background = `radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.16), transparent 24%), ${headPreset.headColor}`;
+		avatarName.textContent = `${headLabel} / ${topLabel} / ${bottomLabel}`;
+	}
+
+	controls.addEventListener("click", (event) => {
+		const button = event.target.closest("button[data-merch-action]");
+		if (!button) {
+			return;
+		}
+
+		const action = button.dataset.merchAction;
+
+		if (action === "head-off") {
+			state.headEnabled = false;
+		}
+		if (action === "head-on") {
+			state.headEnabled = true;
+		}
+		if (action === "top-off") {
+			state.topEnabled = false;
+		}
+		if (action === "top-on") {
+			state.topEnabled = true;
+		}
+		if (action === "bottom-off") {
+			state.bottomEnabled = false;
+		}
+		if (action === "bottom-on") {
+			state.bottomEnabled = true;
+		}
+		if (action === "head-prev") {
+			state.headIndex = (state.headIndex - 1 + merchHeadPresets.length) % merchHeadPresets.length;
+			state.headEnabled = true;
+		}
+		if (action === "head-next") {
+			state.headIndex = (state.headIndex + 1) % merchHeadPresets.length;
+			state.headEnabled = true;
+		}
+		if (action === "top-prev") {
+			state.topIndex = (state.topIndex - 1 + merchTopPresets.length) % merchTopPresets.length;
+			state.topEnabled = true;
+		}
+		if (action === "top-next") {
+			state.topIndex = (state.topIndex + 1) % merchTopPresets.length;
+			state.topEnabled = true;
+		}
+		if (action === "bottom-prev") {
+			state.bottomIndex = (state.bottomIndex - 1 + merchBottomPresets.length) % merchBottomPresets.length;
+			state.bottomEnabled = true;
+		}
+		if (action === "bottom-next") {
+			state.bottomIndex = (state.bottomIndex + 1) % merchBottomPresets.length;
+			state.bottomEnabled = true;
+		}
+		if (action === "randomize") {
+			state.skinIndex = Math.floor(Math.random() * merchPresets.length);
+			state.headIndex = Math.floor(Math.random() * merchHeadPresets.length);
+			state.topIndex = Math.floor(Math.random() * merchTopPresets.length);
+			state.bottomIndex = Math.floor(Math.random() * merchBottomPresets.length);
+			state.headEnabled = Math.random() > 0.25;
+			state.topEnabled = Math.random() > 0.2;
+			state.bottomEnabled = Math.random() > 0.2;
+		}
+
+		renderMerchAvatar();
+	});
+
+	renderMerchAvatar();
+}
 
 //track
 
@@ -20,6 +250,8 @@
 
 
 //events
+
+
 
 const events = [
 	{
@@ -243,4 +475,7 @@ function renderUpcomingEvents() {
 	});
 }
 
-document.addEventListener("DOMContentLoaded", renderUpcomingEvents);
+document.addEventListener("DOMContentLoaded", () => {
+	renderUpcomingEvents();
+	initMerchBuilder();
+});

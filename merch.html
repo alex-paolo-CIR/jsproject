@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dash. | Merch</title>
+</head>
+<body class="merch-page">
+    <a href="index.html" class="brand-link">DASH.</a>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="merch.html">merch</a></li>
+            <li><a href="tracks">tracks</a></li>
+            <li><a href="history.html">history</a></li>
+            <li><a href="events.html">events</a></li>
+        </ul>
+    </nav>
+
+    <main class="merch-wrapper">
+        <header class="merch-header">
+            <p class="merch-kicker">Avatar builder</p>
+            <h1>Ton petit bonhomme</h1>
+            <p class="merch-lead">Une base propre pour le futur custom merch style Gang Beasts.</p>
+        </header>
+
+        <section class="avatar-builder" aria-label="Constructeur de personnage">
+            <div class="avatar-stage">
+                <div class="avatar-shadow"></div>
+                <div id="avatar" class="avatar" aria-label="Personnage personnalisable">
+                    <div class="avatar-cap"></div>
+                    <div class="avatar-head">
+                        <span class="avatar-eyes"></span>
+                        <span class="avatar-mouth"></span>
+                    </div>
+                    <div class="avatar-neck"></div>
+                    <div class="avatar-torso"></div>
+                    <div class="avatar-top-layer"></div>
+                    <div class="avatar-arm avatar-arm-left"></div>
+                    <div class="avatar-arm avatar-arm-right"></div>
+                    <div class="avatar-bottom-layer"></div>
+                    <div class="avatar-leg avatar-leg-left">
+                        <span class="avatar-shoe"></span>
+                    </div>
+                    <div class="avatar-leg avatar-leg-right">
+                        <span class="avatar-shoe"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="avatar-panel">
+                <div>
+                    <p class="avatar-panel-label">Preset actuel</p>
+                    <h2 id="avatar-name">Grey Unit</h2>
+                    <p class="avatar-panel-copy">Choisis si la tête, le haut ou le bas sont visibles, puis règle la variante avec les flèches.</p>
+                </div>
+
+                <div class="avatar-controls">
+                    <div class="avatar-control-row">
+                        <span class="avatar-control-label">Tete</span>
+                        <button type="button" class="avatar-button" data-merch-action="head-off">Non</button>
+                        <button type="button" class="avatar-button" data-merch-action="head-on">Oui</button>
+                        <div class="avatar-choice" data-choice="head">
+                            <button type="button" class="avatar-arrow-button" data-merch-action="head-prev">&lt;</button>
+                            <span id="head-choice">Casquette</span>
+                            <button type="button" class="avatar-arrow-button" data-merch-action="head-next">&gt;</button>
+                        </div>
+                    </div>
+
+                    <div class="avatar-control-row">
+                        <span class="avatar-control-label">Haut</span>
+                        <button type="button" class="avatar-button" data-merch-action="top-off">Non</button>
+                        <button type="button" class="avatar-button" data-merch-action="top-on">Oui</button>
+                        <div class="avatar-choice" data-choice="top">
+                            <button type="button" class="avatar-arrow-button" data-merch-action="top-prev">&lt;</button>
+                            <span id="top-choice">T-shirt</span>
+                            <button type="button" class="avatar-arrow-button" data-merch-action="top-next">&gt;</button>
+                        </div>
+                    </div>
+
+                    <div class="avatar-control-row">
+                        <span class="avatar-control-label">Bas</span>
+                        <button type="button" class="avatar-button" data-merch-action="bottom-off">Non</button>
+                        <button type="button" class="avatar-button" data-merch-action="bottom-on">Oui</button>
+                        <div class="avatar-choice" data-choice="bottom">
+                            <button type="button" class="avatar-arrow-button" data-merch-action="bottom-prev">&lt;</button>
+                            <span id="bottom-choice">Pantalon</span>
+                            <button type="button" class="avatar-arrow-button" data-merch-action="bottom-next">&gt;</button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="avatar-button avatar-button-strong" data-merch-action="randomize">Random</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
