@@ -220,11 +220,18 @@ h1 {
   --avatar-shoe: #111215;
   --avatar-eyes: #f5f5f5;
   --avatar-top: #3a3c42;
+  --avatar-top-image: none;
   --avatar-bottom: #3a3c42;
+  --avatar-bottom-image: none;
   --avatar-cap-opacity: 0;
+  --avatar-cap-image: none;
+  --avatar-cap-scale: 1;
+  --avatar-cap-offset-y: 0px;
   --avatar-top-length: 168px;
+  --avatar-arm-sleeve-length: 100%;
   --avatar-bottom-length: 150px;
   --avatar-bottom-offset: 338px;
+  --avatar-leg-cloth-length: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -248,38 +255,25 @@ h1 {
 .avatar-cap {
   position: absolute;
   left: 50%;
-  top: 30px;
-  width: 146px;
-  height: 54px;
-  transform: translateX(-50%);
-  border-radius: 52% 52% 36% 36%;
-  background: #2a2c30;
+  top: 20px;
+  width: 156px;
+  height: 86px;
+  transform: translateX(-50%) translateY(var(--avatar-cap-offset-y)) scale(var(--avatar-cap-scale));
+  transform-origin: 50% 50%;
+  background-image: var(--avatar-cap-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   opacity: var(--avatar-cap-opacity);
-  box-shadow: inset 0 -8px 16px rgba(0, 0, 0, 0.22);
+  z-index: 4;
 }
 
 .avatar-cap::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 26px;
-  width: 104px;
-  height: 20px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: #1d1f23;
+  content: none;
 }
 
 .avatar-cap::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 34px;
-  width: 84px;
-  height: 10px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  content: none;
 }
 
 .avatar-eyes {
@@ -335,11 +329,17 @@ h1 {
   position: absolute;
   left: 50%;
   top: 176px;
-  width: 140px;
-  height: 20px;
+  width: 168px;
+  height: var(--avatar-top-length);
   transform: translateX(-50%);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
+  border-radius: 36px 36px 26px 26px;
+  overflow: hidden;
+  background-image: var(--avatar-top-image);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .avatar-torso::before {
@@ -360,8 +360,19 @@ h1 {
   width: 42px;
   height: 154px;
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%), var(--avatar-top);
+  background: var(--avatar-skin);
   box-shadow: inset 0 -12px 18px rgba(0, 0, 0, 0.18);
+}
+
+.avatar-arm::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--avatar-arm-sleeve-length);
+  border-radius: 24px;
+  background: var(--avatar-top);
 }
 
 .avatar-arm::after {
@@ -393,8 +404,20 @@ h1 {
   width: 58px;
   height: var(--avatar-bottom-length);
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%), var(--avatar-bottom);
+  background: var(--avatar-skin);
   box-shadow: inset 0 -12px 18px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.avatar-leg::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--avatar-leg-cloth-length);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%), var(--avatar-bottom);
 }
 
 .avatar-leg::after {
@@ -418,6 +441,13 @@ h1 {
   transform: translateX(-50%);
   border-radius: 24px 24px 16px 16px;
   background: var(--avatar-bottom);
+  background-image: var(--avatar-bottom-image);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+  clip-path: inset(0 0 56% 0 round 24px 24px 14px 14px);
+  z-index: 1;
 }
 
 .avatar-leg-left {

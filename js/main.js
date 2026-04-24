@@ -54,19 +54,28 @@ const merchHeadPresets = [
 	{
 		name: "Casquette",
 		capVisible: true,
+		capImage: "images/avatar/cap.svg",
+		capScale: "1.1",
+		capOffsetY: "-8px",
 		headColor: "#c7ccd2",
 		headLabel: "Casquette",
 	},
 	{
 		name: "Cheveux courts",
 		capVisible: false,
+		capImage: "",
+		capScale: "1",
+		capOffsetY: "0px",
 		headColor: "#b8b0a3",
 		headLabel: "Cheveux",
 	},
 	{
-		name: "Beanie",
+		name: "Bonnet",
 		capVisible: true,
-		headColor: "#36383d",
+		capImage: "images/avatar/beanie.svg",
+		capScale: "1.08",
+		capOffsetY: "-8px",
+		headColor: "#b8b0a3",
 		headLabel: "Bonnet",
 	},
 ];
@@ -74,16 +83,20 @@ const merchHeadPresets = [
 const merchTopPresets = [
 	{
 		name: "T-shirt",
-		color: "#4b4e55",
-		accent: "#24262b",
+		color: "#2f6fdd",
+		accent: "#17386f",
+		topImage: "images/avatar/tshirt.svg",
 		length: "154px",
+		armSleeveLength: "44%",
 		armAngle: "8deg",
 	},
 	{
 		name: "Pull",
-		color: "#5d6066",
-		accent: "#2c2f34",
+		color: "#a3473a",
+		accent: "#5a241d",
+		topImage: "images/avatar/pull.svg",
 		length: "182px",
+		armSleeveLength: "100%",
 		armAngle: "4deg",
 	},
 ];
@@ -91,15 +104,19 @@ const merchTopPresets = [
 const merchBottomPresets = [
 	{
 		name: "Pantalon",
-		color: "#3b3e44",
+		color: "#2e4f86",
+		bottomImage: "images/avatar/pants.svg",
 		length: "152px",
 		offset: "338px",
+		legClothLength: "100%",
 	},
 	{
 		name: "Short",
-		color: "#6a6e75",
+		color: "#3d8a61",
+		bottomImage: "images/avatar/shorts.svg",
 		length: "92px",
 		offset: "396px",
+		legClothLength: "40%",
 	},
 ];
 
@@ -144,16 +161,23 @@ function initMerchBuilder() {
 		avatar.style.setProperty("--avatar-skin", skin.skin);
 		avatar.style.setProperty("--avatar-head-opacity", state.headEnabled ? "1" : "0.25");
 		avatar.style.setProperty("--avatar-cap-opacity", state.headEnabled && headPreset.capVisible ? "1" : "0");
-		avatar.style.setProperty("--avatar-head-color", headPreset.headColor);
+		avatar.style.setProperty("--avatar-cap-image", headPreset.capVisible && headPreset.capImage ? `url('${headPreset.capImage}')` : "none");
+		avatar.style.setProperty("--avatar-cap-scale", headPreset.capScale || "1");
+		avatar.style.setProperty("--avatar-cap-offset-y", headPreset.capOffsetY || "0px");
+		avatar.style.setProperty("--avatar-head-color", skin.skin);
 		avatar.style.setProperty("--avatar-top", topPreset.color);
+		avatar.style.setProperty("--avatar-top-image", topPreset.topImage ? `url('${topPreset.topImage}')` : "none");
 		avatar.style.setProperty("--avatar-bottom", bottomPreset.color);
+		avatar.style.setProperty("--avatar-bottom-image", bottomPreset.bottomImage ? `url('${bottomPreset.bottomImage}')` : "none");
 		avatar.style.setProperty("--avatar-accent", topPreset.accent);
 		avatar.style.setProperty("--avatar-shoe", skin.shoe);
 		avatar.style.setProperty("--avatar-eyes", skin.eyes);
 		avatar.style.setProperty("--avatar-top-length", topPreset.length);
 		avatar.style.setProperty("--avatar-arm-angle", topPreset.armAngle);
+		avatar.style.setProperty("--avatar-arm-sleeve-length", topPreset.armSleeveLength || "100%");
 		avatar.style.setProperty("--avatar-bottom-length", bottomPreset.length);
 		avatar.style.setProperty("--avatar-bottom-offset", bottomPreset.offset);
+		avatar.style.setProperty("--avatar-leg-cloth-length", bottomPreset.legClothLength || "100%");
 		avatar.style.setProperty("--avatar-head-opacity", state.headEnabled ? "1" : "0.18");
 		headChoiceRow.classList.toggle("is-hidden", !state.headEnabled);
 		topChoiceRow.classList.toggle("is-hidden", !state.topEnabled);
@@ -161,7 +185,7 @@ function initMerchBuilder() {
 		headChoice.textContent = headPreset.name;
 		topChoice.textContent = topLabel;
 		bottomChoice.textContent = bottomLabel;
-		headElement.style.background = `radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.16), transparent 24%), ${headPreset.headColor}`;
+		headElement.style.background = `radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.16), transparent 24%), ${skin.skin}`;
 		avatarName.textContent = `${headLabel} / ${topLabel} / ${bottomLabel}`;
 	}
 
