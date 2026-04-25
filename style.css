@@ -78,18 +78,24 @@ a {
 }
 
 .brand-link {
-  display: inline-flex;
-  align-items: center;
   position: absolute;
-  top: 1.25rem;
+  top: 1.15rem;
   left: 1.5rem;
   z-index: 20;
-  color: rgba(236, 239, 243, 0.92);
-  text-decoration: none;
-  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  display: inline-flex;
+  align-items: center;
+  color: rgba(236, 239, 243, 0.9);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2vw, 1.9rem);
   line-height: 1;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+.brand-link:hover,
+.brand-link:focus-visible {
+  color: #ffffff;
 }
 
 .navbar{
@@ -189,13 +195,6 @@ body.merch-page {
   color: var(--page-text);
 }
 
-body.home-page .brand-link,
-body.history-page .brand-link,
-body.events-page .brand-link,
-body.merch-page .brand-link {
-  color: rgba(236, 239, 243, 0.92);
-}
-
 body.home-page .navbar a,
 body.history-page .navbar a,
 body.events-page .navbar a,
@@ -225,7 +224,7 @@ body.merch-page .navbar a[aria-current="page"] {
   height: calc(100vh - 5.75rem);
   padding: 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -233,27 +232,62 @@ body.merch-page .navbar a[aria-current="page"] {
 .home-hero {
   display: flex;
   position: absolute;
-  left: -0.15rem;
-  bottom: 0.55rem;
+  left: -3rem;
+  bottom: calc(0.55rem + 40px);
   width: min(64vw, 840px);
   height: 44vh;
   align-items: flex-end;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.home-copy-block {
+  position: absolute;
+  left: calc(1.1rem + 40px);
+  top: 0.25rem;
+  z-index: 2;
+  width: min(30rem, 42vw);
+}
+
+.home-kicker {
+  margin: 0 0 0.45rem;
+  color: rgba(236, 239, 243, 0.58);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.home-tagline {
+  margin: 0;
+  color: #e2e6ec;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+}
+
+.home-copy {
+  margin: 0.85rem 0 0;
+  color: rgba(213, 218, 228, 0.88);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 .home-hero h1 {
   margin: 0;
-  font-size: clamp(9rem, 27vw, 24rem);
-  color: #eef1f5;
+  font-size: clamp(18rem, 54vw, 48rem);
+  color: rgba(236, 239, 243, 0.18);
   letter-spacing: 0.02em;
   line-height: 0.72;
+  opacity: 0.65;
+  mix-blend-mode: screen;
+  text-shadow: 0 0 42px rgba(255, 255, 255, 0.04);
 }
 
 .home-recents {
   position: absolute;
   top: 4.85rem;
-  right: 0.35rem;
+  right: calc(0.35rem + 50px);
   width: clamp(304px, 32vw, 360px);
   height: clamp(388px, 68vh, 452px);
 }
@@ -264,6 +298,21 @@ body.merch-page .navbar a[aria-current="page"] {
   font-size: clamp(1.95rem, 3vw, 2.55rem);
   letter-spacing: 0.04em;
   text-align: center;
+}
+
+.recent-track--feature {
+  align-items: start;
+}
+
+.recent-track--feature .recent-body {
+  gap: 0.35rem;
+}
+
+.recent-description {
+  margin: 0.1rem 0 0;
+  color: rgba(213, 218, 228, 0.86);
+  font-size: 0.72rem;
+  line-height: 1.5;
 }
 
 body.home-page #recents {
@@ -381,6 +430,52 @@ body.home-page #recents {
   background: rgba(255, 255, 255, 0.04);
 }
 
+.tracks-wrapper {
+  width: min(1060px, calc(100% - 3rem));
+  margin: 6.5rem auto 4.5rem;
+}
+
+.tracks-header {
+  margin-bottom: 1.9rem;
+}
+
+.tracks-kicker {
+  margin: 0;
+  color: #aeb6c2;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.02rem;
+}
+
+.tracks-header h1 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(2.3rem, 5vw, 4.1rem);
+  color: #eceff3;
+  line-height: 0.95;
+}
+
+.tracks-lead {
+  margin: 0.75rem 0 0;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(213, 218, 228, 0.9);
+  font-size: 1.04rem;
+  line-height: 1.55;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.95rem;
+}
+
+.track-mood {
+  margin: 0.4rem 0 0;
+  color: rgba(213, 218, 228, 0.9);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
 .merch-wrapper {
   width: min(1100px, calc(100% - 3rem));
   margin: 6.5rem auto 4.5rem;
@@ -410,6 +505,15 @@ body.home-page #recents {
   font-family: "Montserrat", sans-serif;
   color: rgba(213, 218, 228, 0.9);
   font-size: 1.04rem;
+  line-height: 1.55;
+}
+
+.merch-copy {
+  margin: 0.55rem 0 0;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(213, 218, 228, 0.86);
+  font-size: 0.96rem;
+  line-height: 1.55;
 }
 
 .avatar-builder {
@@ -825,6 +929,13 @@ body.home-page #recents {
   background: rgba(236, 239, 243, 0.16);
 }
 
+.avatar-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  grid-column: 1 / -1;
+}
+
 .avatar-button[data-merch-action$="-off"],
 .avatar-button[data-merch-action$="-on"] {
   padding-inline: 0.85rem;
@@ -984,6 +1095,18 @@ body.home-page #recents {
 
 
 
+.events-empty {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(213, 218, 228, 0.9);
+  line-height: 1.6;
+}
+
+.next-event-card--empty {
+  padding-bottom: 1.4rem;
+}
+
+
 .history-wrapper {
   width: min(980px, calc(100% - 3rem));
   margin: 6.5rem auto 4rem;
@@ -1112,6 +1235,12 @@ body.home-page #recents {
     bottom: 0.35rem;
   }
 
+  .home-copy-block {
+    left: calc(0.75rem + 40px);
+    top: 0.1rem;
+    width: calc(100% - 1.5rem);
+  }
+
   body.home-page #recents {
     width: min(100%, 260px);
     height: 320px;
@@ -1129,6 +1258,11 @@ body.home-page #recents {
   }
 
   .events-wrapper {
+    width: min(680px, calc(100% - 1.4rem));
+    margin-top: 6rem;
+  }
+
+  .tracks-wrapper {
     width: min(680px, calc(100% - 1.4rem));
     margin-top: 6rem;
   }
@@ -1179,5 +1313,9 @@ body.home-page #recents {
 
   .avatar-choice {
     grid-column: 1 / -1;
+  }
+
+  .avatar-actions {
+    grid-template-columns: 1fr;
   }
 }

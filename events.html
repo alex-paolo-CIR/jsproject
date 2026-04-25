@@ -3,42 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="dash. — RX:GXN +. Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
+    <meta property="og:title" content="dash. — events">
+    <meta property="og:description" content="Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
-    <title>Dash. | Events</title>
+    <title>dash. — events</title>
 </head>
 <body class="events-page">
-    <a href="index.html" class="brand-link">DASH.</a>
+    <a href="index.html" class="brand-link" aria-label="Accueil dash.">dash.</a>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navigation principale">
         <ul class="nav-links">
-            <li><a href="merch.html">merch</a></li>
-            <li><a href="tracks">tracks</a></li>
+            <li><a href="tracks.html">tracks</a></li>
             <li><a href="history.html">history</a></li>
             <li><a href="events.html" aria-current="page">events</a></li>
+            <li><a href="merch.html">merch</a></li>
+            <li><a href="https://soundcloud.com/dassssh" target="_blank" rel="noopener noreferrer">soundcloud ↗</a></li>
         </ul>
     </nav>
 
     <main class="events-wrapper">
         <header class="events-header">
-            <p class="events-kicker">Live schedule</p>
-            <h1>Prochains events</h1>
-            <p class="events-lead">Retrouve ici les prochaines dates de DASH.</p>
+            <p class="events-kicker">Live archive</p>
+            <h1>events</h1>
+            <p class="events-lead">Aucune date annoncée pour le moment.</p>
         </header>
 
-        <section id="next-event" class="next-event-card" aria-live="polite">
-            <p class="next-event-label">Prochaine date</p>
-            <h2 id="next-event-title">Chargement...</h2>
-            <p id="next-event-meta" class="next-event-meta"></p>
-            <p id="next-event-countdown" class="next-event-countdown"></p>
-            <div id="next-event-actions" class="calendar-actions"></div>
+        <section class="next-event-card next-event-card--empty" aria-live="polite">
+            <p class="next-event-label">Live</p>
+            <h2>Aucune date annoncée pour le moment.</h2>
+            <p class="events-empty">Les prochains signaux live seront ajoutés ici.</p>
         </section>
 
-        <section class="upcoming-events-section" aria-label="Liste des prochains events">
-            <h2>Calendrier a venir</h2>
-            <div id="upcoming-events" class="events-grid"></div>
+        <section class="upcoming-events-section" aria-label="Structure future des events">
+            <h2>signaux à venir</h2>
+            <div id="upcoming-events" class="events-grid" data-future-events></div>
         </section>
     </main>
-
-    <script src="js/main.js"></script>
 </body>
 </html>

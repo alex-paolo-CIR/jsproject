@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="dash. — RX:GXN +. Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
+    <meta property="og:title" content="dash. — merch lab">
+    <meta property="og:description" content="Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
-    <title>Dash. | Merch</title>
+    <title>dash. — merch lab</title>
 </head>
 <body class="merch-page">
-    <a href="index.html" class="brand-link">DASH.</a>
+    <a href="index.html" class="brand-link" aria-label="Accueil dash.">dash.</a>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navigation principale">
         <ul class="nav-links">
-            <li><a href="merch.html">merch</a></li>
-            <li><a href="tracks">tracks</a></li>
+            <li><a href="tracks.html">tracks</a></li>
             <li><a href="history.html">history</a></li>
             <li><a href="events.html">events</a></li>
+            <li><a href="merch.html" aria-current="page">merch</a></li>
+            <li><a href="https://soundcloud.com/dassssh" target="_blank" rel="noopener noreferrer">soundcloud ↗</a></li>
         </ul>
     </nav>
 
     <main class="merch-wrapper">
         <header class="merch-header">
-            <p class="merch-kicker">Avatar builder</p>
-            <h1>Ton petit bonhomme</h1>
-            <p class="merch-lead">Une base propre pour le futur custom merch style Gang Beasts.</p>
+            <p class="merch-kicker">merch lab</p>
+            <h1>merch lab</h1>
+            <p class="merch-lead">prototype visuel, silhouettes, unités grises.</p>
+            <p class="merch-copy">compose une silhouette RX:GXN à partir de presets bruts.</p>
         </header>
 
         <section class="avatar-builder" aria-label="Constructeur de personnage">
             <div class="avatar-stage">
                 <div class="avatar-shadow"></div>
-                <div id="avatar" class="avatar" aria-label="Personnage personnalisable">
+                <div id="avatar" class="avatar" aria-label="Silhouette personnalisable">
                     <div class="avatar-cap"></div>
                     <div class="avatar-head">
                         <span class="avatar-eyes"></span>
@@ -51,14 +57,14 @@
 
             <div class="avatar-panel">
                 <div>
-                    <p class="avatar-panel-label">Preset actuel</p>
+                    <p class="avatar-panel-label">Unité actuelle</p>
                     <h2 id="avatar-name">Grey Unit</h2>
-                    <p class="avatar-panel-copy">Choisis si la tête, le haut ou le bas sont visibles, puis règle la variante avec les flèches.</p>
+                    <p class="avatar-panel-copy">Choisis une silhouette RX:GXN, puis ajuste les presets avec les flèches.</p>
                 </div>
 
                 <div class="avatar-controls">
                     <div class="avatar-control-row">
-                        <span class="avatar-control-label">Tete</span>
+                        <span class="avatar-control-label">Tête</span>
                         <button type="button" class="avatar-button" data-merch-action="head-off">Non</button>
                         <button type="button" class="avatar-button" data-merch-action="head-on">Oui</button>
                         <div class="avatar-choice" data-choice="head">
@@ -90,13 +96,16 @@
                         </div>
                     </div>
 
-                    <button type="button" class="avatar-button avatar-button-strong" data-merch-action="randomize">Random</button>
+                    <div class="avatar-actions">
+                        <button type="button" class="avatar-button avatar-button-strong" data-merch-action="randomize">random unit</button>
+                        <button type="button" class="avatar-button" data-merch-action="reset">reset</button>
+                        <button type="button" class="avatar-button" data-merch-action="export">export</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <script src="js/main.js"></script>
-
 </body>
 </html>
