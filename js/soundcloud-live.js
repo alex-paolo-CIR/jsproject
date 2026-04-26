@@ -115,8 +115,8 @@ function setStatus(data) {
   const statusNodes = document.querySelectorAll("[data-soundcloud-status]");
   const date = data?.scraped_at ? formatDate(data.scraped_at) : "";
   const text = data?.stale
-    ? "SoundCloud sync cache"
-    : `SoundCloud sync ${date}`;
+    ? "audio disponible"
+    : `mis à jour ${date}`;
 
   statusNodes.forEach((node) => {
     node.textContent = text;
@@ -178,14 +178,14 @@ function renderTrackCard(track) {
       <p class="event-date">${escapeHtml(metaParts.filter(Boolean).join(" / "))}</p>
       <h3>${escapeHtml(track.title)}</h3>
       <p class="track-mood">${escapeHtml([formatPlays(track.plays), formatDuration(track.duration), track.genre].filter(Boolean).join(" / "))}</p>
-      <div class="track-stats" aria-label="Statistiques SoundCloud">
+      <div class="track-stats" aria-label="Statistiques audio">
         <span>${escapeHtml(formatCompact(track.likes))} likes</span>
-        <span>${escapeHtml(formatCompact(track.reposts))} reposts</span>
-        <span>${escapeHtml(formatCompact(track.comments))} comments</span>
+        <span>${escapeHtml(formatCompact(track.reposts))} partages</span>
+        <span>${escapeHtml(formatCompact(track.comments))} commentaires</span>
       </div>
-      ${renderSoundCloudEmbed(track, `Player SoundCloud - ${track.title}`)}
+      ${renderSoundCloudEmbed(track, `Lecteur audio - ${track.title}`)}
       <div class="calendar-actions track-actions">
-        <a class="calendar-link" href="${escapeHtml(track.url)}" target="_blank" rel="noopener noreferrer">ecouter sur SoundCloud</a>
+        <a class="calendar-link" href="${escapeHtml(track.url)}" target="_blank" rel="noopener noreferrer">écouter</a>
       </div>
     </article>
   `;
@@ -194,12 +194,12 @@ function renderTrackCard(track) {
 function renderRepostCard(repost) {
   return `
     <article class="event-card track-card track-card--repost">
-      <p class="event-date">repost / ${escapeHtml(repost.artist || "SoundCloud")}</p>
+      <p class="event-date">signal / ${escapeHtml(repost.artist || "audio")}</p>
       <h3>${escapeHtml(repost.title)}</h3>
       <p class="track-mood">${escapeHtml([formatPlays(repost.plays), formatDate(repost.reposted_at)].filter(Boolean).join(" / "))}</p>
-      ${renderSoundCloudEmbed(repost, `Player SoundCloud - ${repost.title}`)}
+      ${renderSoundCloudEmbed(repost, `Lecteur audio - ${repost.title}`)}
       <div class="calendar-actions track-actions">
-        <a class="calendar-link" href="${escapeHtml(repost.url)}" target="_blank" rel="noopener noreferrer">ouvrir le repost</a>
+        <a class="calendar-link" href="${escapeHtml(repost.url)}" target="_blank" rel="noopener noreferrer">ouvrir</a>
       </div>
     </article>
   `;
@@ -220,7 +220,7 @@ function renderTracksPage(data) {
     const reposts = data?.discography?.reposts_featuring_dash || [];
     repostGrid.innerHTML = reposts.length > 0
       ? reposts.map(renderRepostCard).join("")
-      : '<p class="events-empty">Aucun repost avec mention dash. detecte pour le moment.</p>';
+      : '<p class="events-empty">Aucune apparition détectée pour le moment.</p>';
   }
 
   const profileNodes = document.querySelectorAll("[data-soundcloud-profile]");
@@ -247,7 +247,7 @@ async function fetchSoundCloudData(force = false) {
   });
 
   if (!response.ok) {
-    throw new Error(`SoundCloud API HTTP ${response.status}`);
+    throw new Error(`Audio API HTTP ${response.status}`);
   }
 
   return response.json();

@@ -81,12 +81,17 @@ a {
 }
 
 .brand-link {
-  position: absolute;
-  top: 1.15rem;
-  left: 1.5rem;
-  z-index: 20;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
   display: inline-flex;
   align-items: center;
+  padding: 0.18rem 0.36rem 0.24rem;
+  border: 1px solid rgba(164, 171, 182, 0.12);
+  border-radius: 999px;
+  background: rgba(10, 12, 16, 0.34);
+  backdrop-filter: blur(8px);
   color: rgba(236, 239, 243, 0.9);
   font-family: var(--font-display);
   font-size: 1.75rem;
@@ -99,6 +104,10 @@ a {
 .brand-link:hover,
 .brand-link:focus-visible {
   color: #ffffff;
+}
+
+body.home-page .brand-link {
+  display: none;
 }
 
 .navbar{
