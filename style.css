@@ -10,6 +10,8 @@
   --surface-border: rgba(164, 171, 182, 0.22);
   --surface-border-strong: rgba(164, 171, 182, 0.3);
   --page-shadow: 0 12px 34px rgba(8, 12, 22, 0.34);
+  --card-radius: 8px;
+  --control-radius: 999px;
 }
 
 *,
@@ -26,6 +28,7 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--page-text);
+  line-height: 1.5;
   background:
     radial-gradient(circle at 15% 15%, rgba(118, 123, 132, 0.18), transparent 38%),
     radial-gradient(circle at 85% 10%, rgba(84, 81, 81, 0.2), transparent 34%),
@@ -86,7 +89,7 @@ a {
   align-items: center;
   color: rgba(236, 239, 243, 0.9);
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 2vw, 1.9rem);
+  font-size: 1.75rem;
   line-height: 1;
   letter-spacing: 0.12em;
   text-decoration: none;
@@ -122,7 +125,7 @@ a {
 
 .nav-links {
   display: flex;
-  gap: clamp(0.9rem, 2vw, 1.6rem);
+  gap: 1.35rem;
   list-style: none;
   margin: 0;
   padding: 0.9rem 1.15rem;
@@ -141,6 +144,48 @@ a {
 .navbar a[aria-current="page"] {
   color: #eceff3;
   text-shadow: 0 0 14px rgba(236, 239, 243, 0.2);
+}
+
+.nav-toggle {
+  display: none;
+  border: 1px solid rgba(164, 171, 182, 0.28);
+  border-radius: 999px;
+  background: rgba(10, 12, 16, 0.62);
+  color: #eceff3;
+  cursor: pointer;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  place-items: center;
+  place-content: center;
+  box-shadow: 0 10px 26px rgba(8, 12, 22, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  background: rgba(26, 30, 36, 0.9);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 
@@ -163,8 +208,8 @@ h1 {
 
 #recents {
   margin: 0;
-  padding: 1rem 1rem 0.9rem;
-  border-radius: 26px;
+  padding: 1rem;
+  border-radius: var(--card-radius);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -261,7 +306,7 @@ body.merch-page .navbar a[aria-current="page"] {
 .home-tagline {
   margin: 0;
   color: #e2e6ec;
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-size: 1rem;
   line-height: 1.55;
   letter-spacing: 0.02em;
 }
@@ -275,7 +320,7 @@ body.merch-page .navbar a[aria-current="page"] {
 
 .home-hero h1 {
   margin: 0;
-  font-size: clamp(18rem, 54vw, 48rem);
+  font-size: 38rem;
   color: rgba(236, 239, 243, 0.18);
   letter-spacing: 0.02em;
   line-height: 0.72;
@@ -288,14 +333,14 @@ body.merch-page .navbar a[aria-current="page"] {
   position: absolute;
   top: 4.85rem;
   right: calc(0.35rem + 50px);
-  width: clamp(304px, 32vw, 360px);
-  height: clamp(388px, 68vh, 452px);
+  width: 380px;
+  min-height: 430px;
 }
 
 .home-recents h2 {
   margin: 0 0 0.55rem;
   color: #eef1f5;
-  font-size: clamp(1.95rem, 3vw, 2.55rem);
+  font-size: 2.55rem;
   letter-spacing: 0.04em;
   text-align: center;
 }
@@ -321,16 +366,18 @@ body.home-page #recents {
 
 .recent-list {
   display: grid;
-  gap: 0.52rem;
+  gap: 0.65rem;
 }
 
 .recent-track {
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: 0.55rem;
-  align-items: center;
-  padding: 0.28rem 0.32rem;
-  border-radius: 999px;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+  min-height: 86px;
+  padding: 0.65rem;
+  border: 1px solid rgba(164, 171, 182, 0.12);
+  border-radius: var(--card-radius);
   background: rgba(255, 255, 255, 0.025);
 }
 
@@ -396,6 +443,9 @@ body.home-page #recents {
 
 .recent-title {
   color: rgba(201, 206, 214, 0.88);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .recent-meta {
@@ -431,7 +481,7 @@ body.home-page #recents {
 }
 
 .tracks-wrapper {
-  width: min(1060px, calc(100% - 3rem));
+  width: min(1180px, calc(100% - 3rem));
   margin: 6.5rem auto 4.5rem;
 }
 
@@ -449,7 +499,7 @@ body.home-page #recents {
 
 .tracks-header h1 {
   margin: 0.35rem 0 0;
-  font-size: clamp(2.3rem, 5vw, 4.1rem);
+  font-size: 4.1rem;
   color: #eceff3;
   line-height: 0.95;
 }
@@ -462,18 +512,103 @@ body.home-page #recents {
   line-height: 1.55;
 }
 
+.soundcloud-status,
+.soundcloud-profile-line {
+  margin: 0.55rem 0 0;
+  color: rgba(184, 192, 204, 0.86);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.soundcloud-profile-line {
+  color: rgba(213, 218, 228, 0.82);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.95rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.track-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+  min-height: 100%;
+}
+
+.event-card.track-card h3 {
+  margin: 0;
+  color: #eef1f5;
+  font-size: 1.85rem;
+  line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .track-mood {
-  margin: 0.4rem 0 0;
+  margin: 0;
   color: rgba(213, 218, 228, 0.9);
   font-family: "Montserrat", sans-serif;
-  font-size: 0.98rem;
-  line-height: 1.55;
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.track-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+
+.track-stats span {
+  border: 1px solid rgba(164, 171, 182, 0.18);
+  border-radius: var(--control-radius);
+  background: rgba(199, 206, 217, 0.06);
+  color: rgba(213, 218, 228, 0.78);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.48rem;
+}
+
+.soundcloud-embed {
+  height: 122px;
+  margin-top: 0.15rem;
+  overflow: hidden;
+  border: 1px solid rgba(164, 171, 182, 0.18);
+  border-radius: var(--card-radius);
+  background: rgba(12, 14, 18, 0.72);
+}
+
+.soundcloud-embed iframe {
+  display: block;
+  width: 100%;
+  height: 122px;
+  border: 0;
+}
+
+.track-actions {
+  margin-top: auto;
+  padding-top: 0.1rem;
+}
+
+.tracks-reposts-section {
+  margin-top: 2.2rem;
+}
+
+.tracks-reposts-section h2 {
+  margin: 0 0 0.95rem;
+  color: #eef1f5;
+  font-size: 2.1rem;
+}
+
+.track-card--repost {
+  border-color: rgba(199, 206, 217, 0.28);
 }
 
 .merch-wrapper {
@@ -526,7 +661,7 @@ body.home-page #recents {
 .avatar-stage {
   position: relative;
   min-height: 640px;
-  border-radius: 26px;
+  border-radius: var(--card-radius);
   background:
     radial-gradient(circle at 50% 28%, rgba(164, 171, 182, 0.18), transparent 26%),
     linear-gradient(180deg, rgba(27, 30, 34, 0.9), rgba(16, 18, 21, 0.96));
@@ -816,7 +951,7 @@ body.home-page #recents {
   display: grid;
   gap: 1rem;
   padding: 1.3rem;
-  border-radius: 22px;
+  border-radius: var(--card-radius);
   background: rgba(27, 30, 34, 0.72);
   border: 1px solid rgba(164, 171, 182, 0.22);
   box-shadow: 0 12px 34px rgba(8, 12, 22, 0.3);
@@ -857,7 +992,7 @@ body.home-page #recents {
   gap: 0.55rem;
   align-items: center;
   padding: 0.65rem;
-  border-radius: 18px;
+  border-radius: var(--card-radius);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(164, 171, 182, 0.12);
 }
@@ -974,7 +1109,7 @@ body.home-page #recents {
 
 .next-event-card {
   padding: 1.35rem 1.4rem;
-  border-radius: 16px;
+  border-radius: var(--card-radius);
   background: linear-gradient(132deg, rgba(32, 36, 43, 0.82), rgba(26, 30, 36, 0.78));
   border: 1px solid rgba(164, 171, 182, 0.3);
   box-shadow: 0 12px 34px rgba(8, 12, 22, 0.36);
@@ -1017,7 +1152,7 @@ body.home-page #recents {
 
 .event-card {
   padding: 1.05rem 1.15rem 1.15rem;
-  border-radius: 14px;
+  border-radius: var(--card-radius);
   background: rgba(27, 30, 34, 0.68);
   border: 1px solid rgba(164, 171, 182, 0.22);
   opacity: 0;
@@ -1043,7 +1178,7 @@ body.home-page #recents {
 
 .event-card h3 {
   margin: 0.35rem 0 0;
-  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  font-size: 1.8rem;
   color: #eef1f5;
   line-height: 0.95;
 }
@@ -1179,7 +1314,7 @@ body.home-page #recents {
   padding: 1.15rem 1.2rem 1.2rem;
   background: rgba(27, 30, 34, 0.68);
   border: 1px solid rgba(164, 171, 182, 0.22);
-  border-radius: 14px;
+  border-radius: var(--card-radius);
   backdrop-filter: blur(4px);
 }
 
@@ -1219,37 +1354,212 @@ body.home-page #recents {
 }
 
 @media (max-width: 760px) {
+  body.home-page {
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .brand-link {
+    top: 0.85rem;
+    left: 0.85rem;
+    font-size: 1.55rem;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0.72rem;
+    right: 0.78rem;
+    justify-content: flex-end;
+    padding: 0;
+    z-index: 50;
+  }
+
+  .nav-toggle {
+    display: grid;
+    grid-template-rows: repeat(3, 2px);
+    gap: 4px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    width: min(245px, calc(100vw - 1.6rem));
+    padding: 0.55rem;
+    border-radius: var(--card-radius);
+    background: rgba(13, 15, 19, 0.94);
+    box-shadow: 0 18px 42px rgba(3, 6, 12, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  }
+
+  .navbar[data-menu-open="true"] .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .navbar a {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.64rem 0.72rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+  }
+
+  .navbar a:hover,
+  .navbar a:focus-visible,
+  .navbar a[aria-current="page"] {
+    background: rgba(199, 206, 217, 0.08);
+  }
+
   .home-wrapper {
     width: 100%;
-    margin-top: 5.75rem;
-    height: calc(100vh - 5.75rem);
-    padding: 0 0.75rem 0 0.1rem;
-    grid-template-columns: 1fr;
+    min-height: 100svh;
+    height: auto;
+    margin: 0;
+    padding: 5.15rem 0.8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    overflow: visible;
   }
 
   .home-hero {
-    position: absolute;
-    width: calc(100% - 0.5rem);
+    order: 2;
+    position: relative;
+    width: 100%;
+    min-height: 132px;
     height: auto;
-    left: 0;
-    bottom: 0.35rem;
+    left: auto;
+    bottom: auto;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .home-hero h1 {
+    position: absolute;
+    left: -0.45rem;
+    bottom: -1.25rem;
+    z-index: 0;
+    font-size: 10.5rem;
+    opacity: 0.58;
   }
 
   .home-copy-block {
-    left: calc(0.75rem + 40px);
-    top: 0.1rem;
-    width: calc(100% - 1.5rem);
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 1;
+    width: 100%;
+    padding: 1rem 0.15rem 0;
+  }
+
+  .home-kicker {
+    font-size: 0.82rem;
+    letter-spacing: 0.32em;
   }
 
   body.home-page #recents {
-    width: min(100%, 260px);
-    height: 320px;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: 1rem;
   }
 
   .home-recents {
-    top: 3.25rem;
-    right: 0.55rem;
-    width: min(260px, 44vw);
+    order: 1;
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+  }
+
+  .home-recents h2 {
+    margin-bottom: 0.35rem;
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .home-recents .soundcloud-status {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+  }
+
+  .recent-list {
+    gap: 0.75rem;
+  }
+
+  .recent-track {
+    grid-template-columns: 56px minmax(0, 1fr);
+    min-height: 118px;
+    padding: 0.85rem;
+  }
+
+  .recent-cover {
+    width: 54px;
+    height: 54px;
+    font-size: 1rem;
+  }
+
+  .recent-head {
+    grid-template-columns: 18px minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    align-items: start;
+  }
+
+  .recent-play {
+    width: 18px;
+    height: 18px;
+    font-size: 0.58rem;
+  }
+
+  .recent-artist,
+  .recent-title,
+  .recent-meta {
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  .recent-title {
+    white-space: normal;
+  }
+
+  .recent-description {
+    margin-top: 0.28rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .recent-track .calendar-actions {
+    margin-top: 0.72rem;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .recent-track .calendar-link {
+    flex: 0 1 auto;
+    min-height: 36px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.74rem;
+    white-space: nowrap;
   }
 
   .history-wrapper {
@@ -1264,7 +1574,20 @@ body.home-page #recents {
 
   .tracks-wrapper {
     width: min(680px, calc(100% - 1.4rem));
-    margin-top: 6rem;
+    margin-top: 5.9rem;
+  }
+
+  .tracks-header h1 {
+    font-size: 3.1rem;
+  }
+
+  .tracks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .soundcloud-embed,
+  .soundcloud-embed iframe {
+    height: 118px;
   }
 
   .timeline::before {
@@ -1317,5 +1640,34 @@ body.home-page #recents {
 
   .avatar-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-links {
+    width: min(225px, calc(100vw - 1.4rem));
+    padding: 0.5rem;
+  }
+
+  .navbar a {
+    font-size: 0.92rem;
+  }
+
+  .home-recents h2 {
+    font-size: 2.6rem;
+  }
+
+  .recent-track {
+    grid-template-columns: 48px minmax(0, 1fr);
+    padding: 0.75rem;
+  }
+
+  .recent-cover {
+    width: 48px;
+    height: 48px;
+  }
+
+  .recent-track .calendar-actions {
+    flex-wrap: wrap;
   }
 }

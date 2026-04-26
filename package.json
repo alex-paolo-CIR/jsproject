@@ -1,0 +1,13 @@
+{
+  "name": "dash-soundcloud-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "scrape:soundcloud": "node scripts/soundcloud-scraper.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

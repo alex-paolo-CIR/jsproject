@@ -28,9 +28,11 @@
             <p class="tracks-kicker">SoundCloud archive</p>
             <h1>tracks</h1>
             <p class="tracks-lead">Les morceaux publics actuellement mis en avant par dash.</p>
+            <p class="soundcloud-status" data-soundcloud-status>SoundCloud sync...</p>
+            <p class="soundcloud-profile-line" data-soundcloud-profile></p>
         </header>
 
-        <section class="tracks-grid" aria-label="Tracks de dash.">
+        <section class="tracks-grid" aria-label="Tracks de dash." data-soundcloud-tracks>
             <article class="event-card track-card">
                 <p class="event-date">single / collaboration • 2025</p>
                 <h3>ASAP w/Karl Claver</h3>
@@ -79,6 +81,14 @@
                 </div>
             </article>
         </section>
+
+        <section class="tracks-reposts-section" aria-labelledby="reposts-title">
+            <h2 id="reposts-title">reposts avec dash.</h2>
+            <div class="tracks-grid" data-soundcloud-reposts></div>
+        </section>
     </main>
+
+    <script src="js/soundcloud-live.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>
