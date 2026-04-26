@@ -88,10 +88,6 @@ a {
   display: inline-flex;
   align-items: center;
   padding: 0.18rem 0.36rem 0.24rem;
-  border: 1px solid rgba(164, 171, 182, 0.12);
-  border-radius: 999px;
-  background: rgba(10, 12, 16, 0.34);
-  backdrop-filter: blur(8px);
   color: rgba(236, 239, 243, 0.9);
   font-family: var(--font-display);
   font-size: 1.75rem;
@@ -340,10 +336,12 @@ body.merch-page .navbar a[aria-current="page"] {
 
 .home-recents {
   position: absolute;
-  top: 4.85rem;
+  top: 4.4rem;
   right: calc(0.35rem + 50px);
-  width: 380px;
-  min-height: 430px;
+  width: 450px;
+  max-height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .home-recents h2 {
@@ -388,6 +386,11 @@ body.home-page #recents {
   border: 1px solid rgba(164, 171, 182, 0.12);
   border-radius: var(--card-radius);
   background: rgba(255, 255, 255, 0.025);
+}
+
+.recent-track .soundcloud-embed,
+.recent-track .soundcloud-embed iframe {
+  height: 104px;
 }
 
 .recent-cover {
@@ -658,6 +661,111 @@ body.home-page #recents {
   color: rgba(213, 218, 228, 0.86);
   font-size: 0.96rem;
   line-height: 1.55;
+}
+
+.merch-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-card {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.05rem 1.15rem 1.15rem;
+  border: 1px solid rgba(164, 171, 182, 0.22);
+  border-radius: var(--card-radius);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 34%),
+    rgba(27, 30, 34, 0.72);
+  box-shadow: var(--page-shadow);
+  backdrop-filter: blur(10px);
+}
+
+.product-card::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.45;
+  margin-bottom: 0.9rem;
+  border: 1px solid rgba(164, 171, 182, 0.16);
+  border-radius: var(--card-radius);
+  background:
+    linear-gradient(135deg, rgba(236, 239, 243, 0.12), transparent 46%),
+    repeating-linear-gradient(90deg, rgba(236, 239, 243, 0.08) 0 1px, transparent 1px 7px),
+    #101216;
+}
+
+.product-card--media::before {
+  border-radius: 50%;
+  width: min(150px, 74%);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.product-card--print::before {
+  width: min(132px, 70%);
+  aspect-ratio: 0.72;
+  margin-inline: auto;
+}
+
+.product-card--wear::before {
+  clip-path: polygon(19% 22%, 36% 8%, 64% 8%, 81% 22%, 70% 45%, 70% 92%, 30% 92%, 30% 45%);
+}
+
+.product-type,
+.product-status,
+.product-price,
+.product-copy {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.product-type {
+  color: #aeb6c2;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.product-card h2 {
+  margin: 0.35rem 0 0;
+  color: #eef1f5;
+  font-size: 1.72rem;
+  line-height: 1;
+}
+
+.product-price {
+  margin-top: 0.55rem;
+  color: #f1f3f6;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.product-status {
+  margin-top: 0.15rem;
+  color: #b8c0cc;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.product-copy {
+  margin-top: 0.7rem;
+  color: rgba(213, 218, 228, 0.86);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.product-button {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.merch-preview {
+  margin-top: 1.4rem;
 }
 
 .avatar-builder {
@@ -1006,6 +1114,10 @@ body.home-page #recents {
   border: 1px solid rgba(164, 171, 182, 0.12);
 }
 
+.avatar-control-row[hidden] {
+  display: none;
+}
+
 .avatar-control-label {
   color: #b8c0cc;
   text-transform: uppercase;
@@ -1066,6 +1178,13 @@ body.home-page #recents {
 .avatar-button:focus-visible {
   background: rgba(199, 206, 217, 0.22);
   transform: translateY(-1px);
+}
+
+.avatar-button:disabled,
+.product-button:disabled {
+  cursor: default;
+  opacity: 0.76;
+  transform: none;
 }
 
 .avatar-button-strong {

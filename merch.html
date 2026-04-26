@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="dash. — RX:GXN +. Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
-    <meta property="og:title" content="dash. — merch lab">
+    <meta property="og:title" content="dash. — merch">
     <meta property="og:description" content="Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
-    <title>dash. — merch lab</title>
+    <title>dash. — merch</title>
 </head>
 <body class="merch-page">
     <a href="index.html" class="brand-link" aria-label="Accueil dash.">dash.</a>
@@ -25,16 +25,63 @@
 
     <main class="merch-wrapper">
         <header class="merch-header">
-            <p class="merch-kicker">merch lab</p>
-            <h1>merch lab</h1>
-            <p class="merch-lead">prototype visuel, silhouettes, unités grises.</p>
-            <p class="merch-copy">compose une silhouette RX:GXN à partir de presets bruts.</p>
+            <p class="merch-kicker">official drop</p>
+            <h1>merch</h1>
+            <p class="merch-lead">Objets RX:GXN +, vêtements froids, formats physiques.</p>
+            <p class="merch-copy">Sélection limitée en préparation. Aucun paiement actif pour le moment.</p>
         </header>
 
-        <section class="avatar-builder" aria-label="Constructeur de personnage">
+        <section class="merch-products" aria-label="Catalogue merch">
+            <article class="product-card product-card--media">
+                <p class="product-type">CD</p>
+                <h2>RX:GXN + CD</h2>
+                <p class="product-price">14€</p>
+                <p class="product-status">précommande bientôt</p>
+                <p class="product-copy">Boîtier sobre, visuel noir, fragments audio RX:GXN +.</p>
+                <button type="button" class="calendar-link product-button">précommande bientôt</button>
+            </article>
+
+            <article class="product-card product-card--media">
+                <p class="product-type">vinyle</p>
+                <h2>RX:GXN + Vinyl</h2>
+                <p class="product-price">29€</p>
+                <p class="product-status">bientôt disponible</p>
+                <p class="product-copy">Pressage noir, face nocturne, édition courte.</p>
+                <button type="button" class="calendar-link product-button">voir le drop</button>
+            </article>
+
+            <article class="product-card product-card--print">
+                <p class="product-type">poster</p>
+                <h2>Nocturne Poster</h2>
+                <p class="product-price">12€</p>
+                <p class="product-status">bientôt disponible</p>
+                <p class="product-copy">Affiche verticale, texture sombre, signal minimal.</p>
+                <button type="button" class="calendar-link product-button">voir le drop</button>
+            </article>
+
+            <article class="product-card product-card--wear">
+                <p class="product-type">vêtement</p>
+                <h2>dash. T-shirt</h2>
+                <p class="product-price">32€</p>
+                <p class="product-status">précommande bientôt</p>
+                <p class="product-copy">Coupe droite, coton noir, marquage dash. discret.</p>
+                <button type="button" class="calendar-link product-button">précommande bientôt</button>
+            </article>
+
+            <article class="product-card product-card--wear">
+                <p class="product-type">vêtement</p>
+                <h2>dash. Hoodie</h2>
+                <p class="product-price">64€</p>
+                <p class="product-status">bientôt disponible</p>
+                <p class="product-copy">Hoodie lourd, ton froid, silhouette RX:GXN +.</p>
+                <button type="button" class="calendar-link product-button">voir le drop</button>
+            </article>
+        </section>
+
+        <section class="avatar-builder merch-preview" aria-label="Silhouette preview">
             <div class="avatar-stage">
                 <div class="avatar-shadow"></div>
-                <div id="avatar" class="avatar" aria-label="Silhouette personnalisable">
+                <div id="avatar" class="avatar" aria-label="Aperçu vêtement">
                     <div class="avatar-cap"></div>
                     <div class="avatar-head">
                         <span class="avatar-eyes"></span>
@@ -57,13 +104,13 @@
 
             <div class="avatar-panel">
                 <div>
-                    <p class="avatar-panel-label">Unité actuelle</p>
-                    <h2 id="avatar-name">Grey Unit</h2>
-                    <p class="avatar-panel-copy">Choisis une silhouette RX:GXN, puis ajuste les presets avec les flèches.</p>
+                    <p class="avatar-panel-label">wearables</p>
+                    <h2 id="avatar-name">T-shirt</h2>
+                    <p class="avatar-panel-copy">Aperçu silhouette pour les pièces textile du drop.</p>
                 </div>
 
                 <div class="avatar-controls">
-                    <div class="avatar-control-row">
+                    <div class="avatar-control-row" hidden>
                         <span class="avatar-control-label">Tête</span>
                         <button type="button" class="avatar-button" data-merch-action="head-off">Non</button>
                         <button type="button" class="avatar-button" data-merch-action="head-on">Oui</button>
@@ -75,9 +122,7 @@
                     </div>
 
                     <div class="avatar-control-row">
-                        <span class="avatar-control-label">Haut</span>
-                        <button type="button" class="avatar-button" data-merch-action="top-off">Non</button>
-                        <button type="button" class="avatar-button" data-merch-action="top-on">Oui</button>
+                        <span class="avatar-control-label">Pièce</span>
                         <div class="avatar-choice" data-choice="top">
                             <button type="button" class="avatar-arrow-button" data-merch-action="top-prev">&lt;</button>
                             <span id="top-choice">T-shirt</span>
@@ -85,7 +130,7 @@
                         </div>
                     </div>
 
-                    <div class="avatar-control-row">
+                    <div class="avatar-control-row" hidden>
                         <span class="avatar-control-label">Bas</span>
                         <button type="button" class="avatar-button" data-merch-action="bottom-off">Non</button>
                         <button type="button" class="avatar-button" data-merch-action="bottom-on">Oui</button>
@@ -97,9 +142,7 @@
                     </div>
 
                     <div class="avatar-actions">
-                        <button type="button" class="avatar-button avatar-button-strong" data-merch-action="randomize">random unit</button>
-                        <button type="button" class="avatar-button" data-merch-action="reset">reset</button>
-                        <button type="button" class="avatar-button" data-merch-action="export">export</button>
+                        <button type="button" class="avatar-button avatar-button-strong" disabled>précommande bientôt</button>
                     </div>
                 </div>
             </div>

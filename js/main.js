@@ -84,7 +84,7 @@ const merchTopPresets = [
 		armAngle: "8deg",
 	},
 	{
-		name: "Pull",
+		name: "Hoodie",
 		color: "#a3473a",
 		accent: "#5a241d",
 		topImage: "images/avatar/pull.svg",
@@ -162,7 +162,7 @@ function initMerchBuilder() {
 		const topPreset = merchTopPresets[state.topIndex];
 		const bottomPreset = merchBottomPresets[state.bottomIndex];
 		const lines = [
-			"dash. merch lab",
+			"dash. merch preview",
 			`skin: ${skin.name}`,
 			`head: ${state.headEnabled ? headPreset.name : "Sans tete"}`,
 			`top: ${state.topEnabled ? topPreset.name : "Sans haut"}`,
@@ -208,7 +208,7 @@ function initMerchBuilder() {
 		topChoice.textContent = topLabel;
 		bottomChoice.textContent = bottomLabel;
 		headElement.style.background = `radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.16), transparent 24%), ${headPreset.headColor || skin.skin}`;
-		avatarName.textContent = `${headLabel} / ${topLabel} / ${bottomLabel}`;
+		avatarName.textContent = topLabel;
 	}
 
 	controls.addEventListener("click", (event) => {

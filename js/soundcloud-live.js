@@ -156,8 +156,9 @@ function renderHomeLatest(data) {
               <span class="recent-meta">${escapeHtml(meta)}</span>
             </div>
             <p class="recent-description">${escapeHtml(description)}</p>
+            ${renderSoundCloudEmbed(track, `Lecteur audio - ${track.title}`)}
             <div class="calendar-actions">
-              <a class="calendar-link" href="${escapeHtml(track.url)}" target="_blank" rel="noopener noreferrer">ecouter</a>
+              <a class="calendar-link" href="${escapeHtml(track.url)}" target="_blank" rel="noopener noreferrer">écouter</a>
               ${index === 0 ? '<a class="calendar-link" href="tracks.html">voir les tracks</a>' : ""}
             </div>
           </div>
