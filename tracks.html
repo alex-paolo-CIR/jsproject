@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="dash. — RX:GXN +. Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
-    <meta property="og:title" content="dash. — tracks">
+    <meta name="description" content="dash. - RX:GXN. Tracks.">
+    <meta property="og:title" content="dash. - tracks">
     <meta property="og:description" content="Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
-    <title>dash. — tracks</title>
+    <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+    <link rel="apple-touch-icon" href="images/favicon.jpg">
+    <title>dash. - tracks</title>
 </head>
 <body class="tracks-page">
     <a href="index.html" class="brand-link" aria-label="Accueil dash.">dash.</a>
@@ -16,25 +18,47 @@
     <nav class="navbar" aria-label="Navigation principale">
         <ul class="nav-links">
             <li><a href="tracks.html" aria-current="page">tracks</a></li>
-            <li><a href="history.html">history</a></li>
             <li><a href="events.html">events</a></li>
             <li><a href="merch.html">merch</a></li>
-            <li><a href="https://soundcloud.com/dassssh" target="_blank" rel="noopener noreferrer">audio ↗</a></li>
+            <li><a href="https://soundcloud.com/dassssh" target="_blank" rel="noopener noreferrer">soundcloud &#8599;</a></li>
         </ul>
     </nav>
 
     <main class="tracks-wrapper">
-        <header class="tracks-header">
-            <p class="tracks-kicker">sélection audio</p>
-            <h1>tracks</h1>
-            <p class="tracks-lead">Les morceaux publics actuellement mis en avant par dash.</p>
-            <p class="soundcloud-status" data-soundcloud-status>mise à jour audio...</p>
-            <p class="soundcloud-profile-line" data-soundcloud-profile></p>
-        </header>
+        <section class="scene tracks-carousel" aria-label="Carousel de covers musicales" data-track-carousel>
+            <h2 class="title-bar">ALBUMS &amp; SINGLES</h2>
+
+            <div class="deck-area" aria-label="Deck de covers" data-track-carousel-deck>
+                <button class="btn-nav btn-prev" type="button" aria-label="Precedent" data-track-carousel-prev>
+                    <span aria-hidden="true">&#10094;</span>
+                </button>
+
+                <div class="card-track" aria-live="polite" data-track-carousel-cards></div>
+
+                <button class="btn-nav btn-next" type="button" aria-label="Suivant" data-track-carousel-next>
+                    <span aria-hidden="true">&#10095;</span>
+                </button>
+            </div>
+
+            <div class="info-panel" aria-live="polite">
+                <p class="info-title" data-track-carousel-title>chargement audio...</p>
+                <span class="info-type" data-track-carousel-type>tracks</span>
+            </div>
+
+            <div class="track-carousel-player" data-track-carousel-player>
+                <p class="track-carousel-empty">les sons se chargent automatiquement depuis SoundCloud.</p>
+            </div>
+
+            <div class="controls">
+                <div class="dots" aria-label="Selection de cover" data-track-carousel-dots></div>
+            </div>
+        </section>
+
+        <h2 class="tracks-list-title">tous les sons</h2>
 
         <section class="tracks-grid" aria-label="Tracks de dash." data-soundcloud-tracks>
             <article class="event-card track-card">
-                <p class="event-date">single / collaboration • 2025</p>
+                <p class="event-date">track • 2025</p>
                 <h3>ASAP w/Karl Claver</h3>
                 <p class="track-mood">urgent, nocturne, direct</p>
                 <div class="calendar-actions track-actions">
@@ -50,7 +74,7 @@
             </article>
 
             <article class="event-card track-card">
-                <p class="event-date">interlude • 2023</p>
+                <p class="event-date">track • 2023</p>
                 <h3>Pulsyon (Interlude)</h3>
                 <p class="track-mood">fragment, basse lumière, trace</p>
                 <div class="calendar-actions track-actions">
@@ -66,7 +90,7 @@
             </article>
 
             <article class="event-card track-card">
-                <p class="event-date">collaboration • année à vérifier</p>
+                <p class="event-date">track • année à vérifier</p>
                 <h3>dash. / bleu [prod. hcvc320]</h3>
                 <p class="track-mood">froid, mélodique, brut</p>
                 <div class="calendar-actions track-actions">
@@ -80,11 +104,6 @@
                     </a>
                 </div>
             </article>
-        </section>
-
-        <section class="tracks-reposts-section" aria-labelledby="reposts-title">
-            <h2 id="reposts-title">apparitions / collaborations</h2>
-            <div class="tracks-grid" data-soundcloud-reposts></div>
         </section>
     </main>
 

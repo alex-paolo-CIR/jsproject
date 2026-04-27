@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="dash. — RX:GXN +. Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
-    <meta property="og:title" content="dash. — events">
-    <meta property="og:description" content="Rap alternatif, fragments nocturnes, maquettes et signaux bruts.">
+    <meta name="description" content="dash. - RX:GXN. Events.">
+    <meta property="og:title" content="dash. - events">
+    <meta property="og:description" content="Events dash.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
-    <title>dash. — events</title>
+    <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+    <link rel="apple-touch-icon" href="images/favicon.jpg">
+    <title>dash. - events</title>
 </head>
 <body class="events-page">
     <a href="index.html" class="brand-link" aria-label="Accueil dash.">dash.</a>
@@ -16,32 +18,144 @@
     <nav class="navbar" aria-label="Navigation principale">
         <ul class="nav-links">
             <li><a href="tracks.html">tracks</a></li>
-            <li><a href="history.html">history</a></li>
             <li><a href="events.html" aria-current="page">events</a></li>
             <li><a href="merch.html">merch</a></li>
-            <li><a href="https://soundcloud.com/dassssh" target="_blank" rel="noopener noreferrer">audio ↗</a></li>
+            <li><a href="https://soundcloud.com/dassssh" target="_blank" rel="noopener noreferrer">soundcloud &#8599;</a></li>
         </ul>
     </nav>
 
     <main class="events-wrapper">
         <header class="events-header">
-            <p class="events-kicker">Live</p>
             <h1>events</h1>
-            <p class="events-lead">Aucune date annoncée pour le moment.</p>
         </header>
 
-        <section class="next-event-card next-event-card--empty" aria-live="polite">
-            <p class="next-event-label">Live</p>
-            <h2>Aucune date annoncée pour le moment.</h2>
-            <p class="events-empty">Les prochains signaux live seront ajoutés ici.</p>
+        <section
+            class="next-event-card"
+            aria-live="polite"
+            data-event-title="RX:GXN room - Le Flow"
+            data-event-location="Le Flow, 1 rue de Fontenoy, Lille"
+            data-event-start="2026-05-29T20:30:00+02:00"
+            data-event-end="2026-05-29T23:30:00+02:00"
+            data-event-description=""
+        >
+            <p class="next-event-label">prochaine date</p>
+            <h2>RX:GXN room - Le Flow</h2>
+            <p class="next-event-meta">Lille - vendredi 29 mai 2026 - 20:30</p>
+            <div class="calendar-actions">
+                <a class="calendar-link" href="#upcoming-events">voir les dates</a>
+            </div>
+            <div class="calendar-apps" data-calendar-links></div>
         </section>
 
-        <section class="upcoming-events-section" aria-label="Structure future des events">
-            <h2>signaux à venir</h2>
-            <div id="upcoming-events" class="events-grid" data-future-events></div>
+        <section class="upcoming-events-section" aria-label="Dates">
+            <h2>signaux a venir</h2>
+            <div id="upcoming-events" class="events-grid">
+                <article
+                    class="event-card"
+                    data-event-title="RX:GXN room"
+                    data-event-location="Le Flow, 1 rue de Fontenoy, Lille"
+                    data-event-start="2026-05-29T20:30:00+02:00"
+                    data-event-end="2026-05-29T23:30:00+02:00"
+                    data-event-description=""
+                >
+                    <p class="event-date">ven. 29 mai 2026</p>
+                    <h3>RX:GXN room</h3>
+                    <p class="event-location">Le Flow - Lille</p>
+                    <div class="calendar-actions">
+                        <span class="calendar-link calendar-link--muted">8-12 EUR</span>
+                    </div>
+                    <div class="calendar-apps" data-calendar-links></div>
+                </article>
+
+                <article
+                    class="event-card"
+                    data-event-title="nocturne tapes"
+                    data-event-location="La Place, Paris Les Halles"
+                    data-event-start="2026-06-13T20:00:00+02:00"
+                    data-event-end="2026-06-13T23:00:00+02:00"
+                    data-event-description=""
+                >
+                    <p class="event-date">sam. 13 juin 2026</p>
+                    <h3>nocturne tapes</h3>
+                    <p class="event-location">La Place - Paris Les Halles</p>
+                    <div class="calendar-actions">
+                        <span class="calendar-link calendar-link--muted">10 EUR</span>
+                    </div>
+                    <div class="calendar-apps" data-calendar-links></div>
+                </article>
+
+                <article
+                    class="event-card"
+                    data-event-title="basement signals"
+                    data-event-location="FGO-Barbara, Paris Goutte d'Or"
+                    data-event-start="2026-06-25T20:30:00+02:00"
+                    data-event-end="2026-06-25T23:15:00+02:00"
+                    data-event-description=""
+                >
+                    <p class="event-date">jeu. 25 juin 2026</p>
+                    <h3>basement signals</h3>
+                    <p class="event-location">FGO-Barbara - Paris Goutte d'Or</p>
+                    <div class="calendar-actions">
+                        <span class="calendar-link calendar-link--muted">12 EUR</span>
+                    </div>
+                    <div class="calendar-apps" data-calendar-links></div>
+                </article>
+
+                <article
+                    class="event-card"
+                    data-event-title="canal rough cuts"
+                    data-event-location="Point Ephemere, Paris Canal Saint-Martin"
+                    data-event-start="2026-07-10T21:00:00+02:00"
+                    data-event-end="2026-07-11T01:00:00+02:00"
+                    data-event-description=""
+                >
+                    <p class="event-date">ven. 10 juillet 2026</p>
+                    <h3>canal rough cuts</h3>
+                    <p class="event-location">Point Ephemere - Paris Canal Saint-Martin</p>
+                    <div class="calendar-actions">
+                        <span class="calendar-link calendar-link--muted">gratuit avant 21h</span>
+                    </div>
+                    <div class="calendar-apps" data-calendar-links></div>
+                </article>
+
+                <article
+                    class="event-card"
+                    data-event-title="nord fragments"
+                    data-event-location="L'Aeronef club, Lille"
+                    data-event-start="2026-07-25T20:30:00+02:00"
+                    data-event-end="2026-07-25T23:45:00+02:00"
+                    data-event-description=""
+                >
+                    <p class="event-date">sam. 25 juillet 2026</p>
+                    <h3>nord fragments</h3>
+                    <p class="event-location">L'Aeronef club - Lille</p>
+                    <div class="calendar-actions">
+                        <span class="calendar-link calendar-link--muted">10-15 EUR</span>
+                    </div>
+                    <div class="calendar-apps" data-calendar-links></div>
+                </article>
+
+                <article
+                    class="event-card"
+                    data-event-title="late reps"
+                    data-event-location="La Bulle Cafe, Lille"
+                    data-event-start="2026-08-06T20:00:00+02:00"
+                    data-event-end="2026-08-06T23:00:00+02:00"
+                    data-event-description=""
+                >
+                    <p class="event-date">jeu. 6 aout 2026</p>
+                    <h3>late reps</h3>
+                    <p class="event-location">La Bulle Cafe - Lille</p>
+                    <div class="calendar-actions">
+                        <span class="calendar-link calendar-link--muted">prix libre</span>
+                    </div>
+                    <div class="calendar-apps" data-calendar-links></div>
+                </article>
+            </div>
         </section>
     </main>
 
+    <script src="js/events-calendar.js"></script>
     <script src="js/navigation.js"></script>
 </body>
 </html>

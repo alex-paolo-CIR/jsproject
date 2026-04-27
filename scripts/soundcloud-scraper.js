@@ -1,3 +1,10 @@
+// --------------------------------------------------- //
+// acunes données sensibles ne sont présentes dans ce fichier. //
+// ce script est destiné à être utilisé localement pour scraper les données du profil SoundCloud de dash. et les sauvegarder dans un fichier JSON. //
+// --------------------------------------------------- //
+
+
+
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -111,11 +118,11 @@ async function fetchClientId(profileUrl = PROFILE_URL) {
         return match[1];
       }
     } catch {
-      // SoundCloud rotates bundles often; one failing script should not stop lookup.
+      // pr les erreurs o cas ou
     }
   }
 
-  throw new Error("SoundCloud client_id not found.");
+  throw new Error("pas de client id");
 }
 
 async function resolveProfile(clientId, profileUrl = PROFILE_URL) {

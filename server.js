@@ -1,3 +1,4 @@
+import { createReadStream } from "node:fs";
 import fs from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
@@ -16,6 +17,7 @@ const MIME_TYPES = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".mp4": "video/mp4",
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon"
@@ -129,7 +131,35 @@ async function handleSoundCloudEvents(request, response) {
   interval = setInterval(() => send(true), LIVE_REFRESH_MS);
 }
 
-async function serveStatic(response, pathname) {
+function parseRange(rangeHeader, size) {
+  const match = /^bytes=(\d*)-(\d*)$/.exec(rangeHeader || "");
+  if (!match) {
+    return null;
+  }
+
+  let start = match[1] ? Number(match[1]) : 0;
+  let end = match[2] ? Number(match[2]) : size - 1;
+
+  if (!match[1] && match[2]) {
+    const suffixLength = Number(match[2]);
+    start = Math.max(size - suffixLength, 0);
+    end = size - 1;
+  }
+
+  if (
+    !Number.isInteger(start) ||
+    !Number.isInteger(end) ||
+    start < 0 ||
+    end < start ||
+    start >= size
+  ) {
+    return null;
+  }
+
+  return { start, end: Math.min(end, size - 1) };
+}
+
+async function serveStatic(request, response, pathname) {
   const cleanPath = pathname === "/" ? "/index.html" : pathname;
   let decodedPath = "";
 
@@ -151,11 +181,52 @@ async function serveStatic(response, pathname) {
   }
 
   try {
-    const file = await fs.readFile(filePath);
+    const stat = await fs.stat(filePath);
+    if (!stat.isFile()) {
+      throw new Error("Not a file");
+    }
+
+    const contentType = MIME_TYPES[path.extname(filePath).toLowerCase()] || "application/octet-stream";
+    const range = parseRange(request.headers.range, stat.size);
+
+    if (request.headers.range && !range) {
+      response.writeHead(416, {
+        "Content-Range": `bytes */${stat.size}`,
+        "Content-Type": "text/plain; charset=utf-8"
+      });
+      response.end("Range not satisfiable");
+      return;
+    }
+
+    if (range) {
+      response.writeHead(206, {
+        "Accept-Ranges": "bytes",
+        "Content-Length": range.end - range.start + 1,
+        "Content-Range": `bytes ${range.start}-${range.end}/${stat.size}`,
+        "Content-Type": contentType
+      });
+
+      if (request.method === "HEAD") {
+        response.end();
+        return;
+      }
+
+      createReadStream(filePath, range).pipe(response);
+      return;
+    }
+
     response.writeHead(200, {
-      "Content-Type": MIME_TYPES[path.extname(filePath).toLowerCase()] || "application/octet-stream"
+      "Accept-Ranges": "bytes",
+      "Content-Length": stat.size,
+      "Content-Type": contentType
     });
-    response.end(file);
+
+    if (request.method === "HEAD") {
+      response.end();
+      return;
+    }
+
+    createReadStream(filePath).pipe(response);
   } catch {
     response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");
@@ -165,7 +236,7 @@ async function serveStatic(response, pathname) {
 const server = http.createServer(async (request, response) => {
   const url = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
 
-  if (request.method !== "GET") {
+  if (request.method !== "GET" && request.method !== "HEAD") {
     response.writeHead(405, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Method not allowed");
     return;
@@ -181,7 +252,7 @@ const server = http.createServer(async (request, response) => {
     return;
   }
 
-  await serveStatic(response, url.pathname);
+  await serveStatic(request, response, url.pathname);
 });
 
 server.listen(PORT, () => {

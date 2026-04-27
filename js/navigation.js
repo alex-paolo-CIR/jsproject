@@ -47,4 +47,6 @@ function initMobileNavigation() {
   setOpen(false);
 }
 
-document.addEventListener("DOMContentLoaded", initMobileNavigation);
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileNavigation();
+});
