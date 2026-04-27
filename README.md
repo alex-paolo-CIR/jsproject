@@ -2,6 +2,7 @@
 
 Projet fait en JavaScript / HTML / CSS autour de l'artiste dash.  
 L'idee etait de faire un petit site complet avec plusieurs pages, pas juste une page vitrine. Il y a une page d'accueil, une page pour les sons, une page events et une boutique merch avec un panier.
+Attention à bien télécharger la vidéo svp elle rajoute vraiment du panache au site et elle est utilisée en fond sur toutes les pages
 
 ## Ce qu'il y a dans le site
 
@@ -12,9 +13,9 @@ L'idee etait de faire un petit site complet avec plusieurs pages, pas juste une 
 - `style.css` : tout le style du site.
 - `server.js` : petit serveur Node pour lancer le projet et recuperer les donnees.
 
-## Le JavaScript utilise
+## Le JavaScript utilisé
 
-J'ai surtout travaille le JS sur ces fichiers :
+On a surtout travaillé le JS sur ces fichiers :
 
 - `js/navigation.js` : menu mobile, ouverture/fermeture du menu et gestion du header.
 - `js/soundcloud-live.js` : recuperation des sons, affichage des covers, carrousel, clic sur les pochettes, navigation avec les fleches du clavier et swipe sur mobile.
@@ -24,16 +25,16 @@ J'ai surtout travaille le JS sur ces fichiers :
 
 Le but etait d'utiliser du JS pour des vrais interactions : clics, evenements clavier, manipulation du DOM, tableaux d'objets, localStorage / donnees locales, et generation de liens dynamiques.
 
-## Fonctionnalites
+## Fonctionnalités
 
-- menu responsive pour telephone ;
-- fond video commun au site ;
-- affichage des derniers sons SoundCloud ;
-- carrousel de covers sans defilement automatique ;
-- controle des tracks avec les fleches de l'interface et les fleches du clavier ;
-- swipe tactile seulement sur telephone ;
-- ajout d'un evenement dans plusieurs apps de calendrier ;
-- panier merch cote front avec total, livraison et quantites.
+- menu responsive pour telephone
+- fond video commun au site
+- affichage des derniers sons SoundCloud
+- carrousel de covers
+- controle des tracks avec les fleches de l'interface et les fleches du clavier
+- swipe tactile seulement sur telephone
+- ajout d'un evenement dans plusieurs apps de calendrier
+- panier merch côté front avec total, livraison et quantités.
 
 ## Lancer le projet
 
@@ -49,26 +50,4 @@ Le site est ensuite disponible ici :
 http://localhost:3000
 ```
 
-## Organisation
-
-```txt
-.
-|-- index.html
-|-- tracks.html
-|-- events.html
-|-- merch.html
-|-- style.css
-|-- server.js
-|-- data/
-|   `-- soundcloud_data.json
-|-- images/
-|   |-- favicon.jpg
-|   `-- fond.png
-|-- js/
-|   |-- navigation.js
-|   |-- soundcloud-live.js
-|   |-- events-calendar.js
-|   `-- merch-cart.js
-`-- scripts/
-    `-- soundcloud-scraper.js
-```
+## Fait par Alexandre PAOLO et Romain KERCKHOVE
