@@ -63,7 +63,7 @@ function initBackgroundVideo() {
   video.preload = "auto";
   video.setAttribute("aria-hidden", "true");
   video.setAttribute("tabindex", "-1");
-  source.src = "alice.mp4";
+  source.src = "https://github.com/alex-paolo-CIR/jsproject/releases/download/video/alice.mp4";
   source.type = "video/mp4";
   video.append(source);
 
