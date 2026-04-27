@@ -27,7 +27,7 @@ Le but etait d'utiliser du JS pour des vrais interactions : clics, evenements cl
 ## Fonctionnalites
 
 - menu responsive pour telephone ;
-- fond visuel commun au site ;
+- fond video commun au site ;
 - affichage des derniers sons SoundCloud ;
 - carrousel de covers sans defilement automatique ;
 - controle des tracks avec les fleches de l'interface et les fleches du clavier ;

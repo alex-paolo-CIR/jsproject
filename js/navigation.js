@@ -47,6 +47,31 @@ function initMobileNavigation() {
   setOpen(false);
 }
 
+function initBackgroundVideo() {
+  if (document.querySelector(".site-background-video")) {
+    return;
+  }
+
+  const video = document.createElement("video");
+  const source = document.createElement("source");
+
+  video.className = "site-background-video";
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.preload = "auto";
+  video.setAttribute("aria-hidden", "true");
+  video.setAttribute("tabindex", "-1");
+  source.src = "alice.mp4";
+  source.type = "video/mp4";
+  video.append(source);
+
+  document.body.prepend(video);
+  video.play().catch(() => {});
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initBackgroundVideo();
   initMobileNavigation();
 });

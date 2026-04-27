@@ -37,6 +37,23 @@ body {
   overflow-x: hidden;
 }
 
+.site-background-video {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+  filter: brightness(0.55) contrast(1.1) saturate(0.82);
+  pointer-events: none;
+}
+
+body > :where(:not(.site-background-video):not(script)) {
+  position: relative;
+  z-index: 2;
+}
+
 body.home-page {
   overflow: hidden;
 }
